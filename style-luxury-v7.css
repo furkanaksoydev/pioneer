@@ -1,0 +1,15 @@
+@import url("./style-luxury-v6.css");
+
+/* Minimal image viewer: only the photograph and its controls remain. */
+.lightbox-stage {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+.lightbox-stage::before,
+.lightbox-stage::after { display: none; }
+.lightbox-stage img {
+    border: 0;
+    box-shadow: 0 18px 55px rgba(0,0,0,.42);
+}

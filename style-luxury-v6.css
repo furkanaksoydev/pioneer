@@ -1,0 +1,18 @@
+@import url("./style-luxury-v5.css");
+
+/* Arrows are pinned to the exact geometric centre of their circular controls. */
+.lightbox-arrow {
+    display: block;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+.lightbox-arrow::before {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 9px;
+    height: 9px;
+    margin: auto;
+    box-sizing: border-box;
+}

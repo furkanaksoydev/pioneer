@@ -1,0 +1,17 @@
+@import url("./style-luxury-v11.css");
+
+/* Keep the numbered medallion fixed at its original size and coordinates on hover. */
+.detail-list div:hover::before {
+    width: 29px;
+    height: 29px;
+    left: 16px;
+    transform: translateY(-50%) scale(1.06);
+}
+
+@media (max-width: 1200px) {
+    .detail-list div:hover::before { width: 27px; height: 27px; left: 14px; }
+}
+
+@media (max-width: 576px) {
+    .detail-list div:hover::before { width: 25px; height: 25px; left: 13px; }
+}

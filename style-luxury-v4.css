@@ -1,0 +1,146 @@
+@import url("./style-luxury-v3.css");
+
+:root {
+    --ink: #06090e;
+    --ink-soft: #0b1017;
+    --ink-raised: #121923;
+}
+
+/* A lighter Arboria cut gives the principal statements a more tailored appearance. */
+h1, h2, h3, em { font-weight: 400; }
+.visual-plaque strong, .project-summary h3, .modal-header h2 { font-weight: 400; }
+
+/* Double-scale, yet controlled, brand signature in the header. */
+.brand img { width: 242px; max-height: 82px; }
+.site-header { padding-block: 20px; }
+.site-header.is-scrolled { padding-block: 11px; }
+
+/* The rich dark-blue surface replaces the remaining brown cards. */
+.project-summary, .visual-plaque { background: #0f1620; }
+.project-summary { border-color: rgba(207, 173, 101, .3); }
+.contact-form { background: rgba(5, 9, 14, .68); }
+
+/* Soft brand watermark: deliberately secondary to the project content. */
+.projects::after {
+    position: absolute;
+    z-index: 0;
+    top: 42%;
+    right: -6%;
+    width: min(47vw, 680px);
+    height: min(47vw, 680px);
+    content: '';
+    opacity: .075;
+    background: url('https://cdn.lavira360.com/pioneer/logo.png') center / contain no-repeat;
+    filter: blur(2px) saturate(.7);
+    pointer-events: none;
+    transform: rotate(-9deg);
+}
+.projects .site-shell { position: relative; z-index: 1; }
+
+/* A lightbox with the same detailed steel-and-gold construction as the project dialogue. */
+.lightbox-stage {
+    position: relative;
+    display: grid;
+    width: min(1320px, 100%);
+    height: min(860px, calc(100svh - 36px));
+    padding: 44px 84px 54px;
+    grid-template-columns: minmax(0, 1fr);
+    border: 1px solid rgba(221, 190, 115, .45);
+    background: linear-gradient(145deg, #121b26, #080d13 58%, #101720);
+    box-shadow: 0 30px 90px rgba(0,0,0,.67), inset 0 1px 0 rgba(255,255,255,.045);
+}
+.lightbox-stage::before {
+    position: absolute;
+    z-index: 0;
+    inset: 13px;
+    content: '';
+    border: 1px solid rgba(221, 190, 115, .2);
+    pointer-events: none;
+}
+.lightbox-stage::after {
+    position: absolute;
+    top: 0;
+    right: 20%;
+    left: 20%;
+    height: 1px;
+    content: '';
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    opacity: .74;
+}
+.lightbox-stage img { position: relative; z-index: 1; width: 100%; max-height: 100%; grid-column: auto; border: 1px solid rgba(225, 196, 123, .24); object-fit: contain; box-shadow: 0 15px 45px rgba(0,0,0,.32); }
+.lightbox-close { top: 20px; right: 21px; }
+.lightbox-arrow { position: absolute; z-index: 2; top: 50%; width: 47px; height: 47px; border-radius: 50%; border-color: rgba(222, 190, 116, .48); color: transparent; background: rgba(7,11,16,.8); box-shadow: inset 0 0 0 4px rgba(220,190,116,.035), 0 6px 20px rgba(0,0,0,.25); transform: translateY(-50%); }
+.lightbox-arrow::before { width: 9px; height: 9px; content: ''; border-top: 1px solid var(--gold-bright); border-right: 1px solid var(--gold-bright); transform: rotate(-135deg); }
+.lightbox-arrow:hover { color: transparent; border-color: var(--gold-bright); background: #cba762; transform: translateY(-50%) scale(1.07); }
+.lightbox-arrow:hover::before { border-color: #0b1118; }
+.lightbox-arrow--prev { left: 20px; }
+.lightbox-arrow--next { right: 20px; }
+.lightbox-arrow--next::before { transform: rotate(45deg); }
+.lightbox-counter { z-index: 2; right: 27px; bottom: 19px; color: var(--gold-bright); }
+
+/* Arrival scenes: discrete, one-time motion gives scroll depth without a template-like loop. */
+.scroll-scene { position: relative; }
+.intro.scroll-scene::after, .expertise.scroll-scene::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    content: '';
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transform: scaleX(.25);
+    transition: opacity 900ms ease, transform 1100ms cubic-bezier(.2,.8,.2,1);
+}
+.intro.scene-entered::after, .expertise.scene-entered::after { opacity: .72; transform: scaleX(1); }
+.principles .principles-grid { opacity: .15; transform: translateY(20px) scale(.985); transition: opacity 900ms ease, transform 1000ms cubic-bezier(.18,.8,.22,1); }
+.principles.scene-entered .principles-grid { opacity: 1; transform: translateY(0) scale(1); }
+.principles::before { opacity: 0; background-size: 110px 110px, 110px 110px, 220px 220px, 220px 220px; transition: opacity 650ms ease, background-size 1300ms cubic-bezier(.2,.8,.2,1); }
+.principles.scene-entered::before { opacity: 1; background-size: 82px 82px, 82px 82px, 164px 164px, 164px 164px; }
+.principles::after { transform: scaleY(0); transform-origin: center; transition: transform 950ms cubic-bezier(.2,.8,.2,1) 100ms; }
+.principles.scene-entered::after { transform: scaleY(1); }
+.principles .principle { transition: border-color 900ms ease, background 900ms ease; }
+.principles.scene-entered .principle { border-color: rgba(226,191,111,.37); background: linear-gradient(150deg, rgba(10,17,25,.58), transparent 65%); }
+.projects::before { opacity: .15; transform: translate(35px, -25px) scale(.9); transition: opacity 1100ms ease, transform 1200ms cubic-bezier(.2,.8,.2,1); }
+.projects.scene-entered::before { opacity: 1; transform: translate(0) scale(1); }
+.projects::after { opacity: 0; transform: translateX(28px) rotate(-9deg); transition: opacity 1200ms ease 160ms, transform 1200ms cubic-bezier(.2,.8,.2,1) 160ms; }
+.projects.scene-entered::after { opacity: .075; transform: translateX(0) rotate(-9deg); }
+.contact .contact-pattern { opacity: 0; transform: rotate(45deg) scale(.84); transition: opacity 1100ms ease, transform 1200ms cubic-bezier(.2,.8,.2,1); }
+.contact.scene-entered .contact-pattern { opacity: 1; transform: rotate(45deg) scale(1); }
+
+@media (max-width: 1200px) {
+    .brand img { width: 210px; }
+}
+
+@media (max-width: 992px) {
+    .brand img { width: 180px; max-height: 65px; }
+    .lightbox-stage { padding: 42px 68px 50px; }
+}
+
+@media (max-width: 768px) {
+    .brand img { width: 156px; max-height: 58px; }
+    .site-header { padding-block: 13px; }
+    .lightbox-stage { height: calc(100svh - 24px); padding: 54px 56px 46px; }
+    .lightbox-arrow--prev { left: 14px; }
+    .lightbox-arrow--next { right: 14px; }
+    .lightbox-close { top: 15px; right: 15px; }
+}
+
+@media (max-width: 576px) {
+    .brand img { width: 142px; max-height: 53px; }
+    .lightbox-stage { padding: 49px 43px 42px; }
+    .lightbox-stage::before { inset: 8px; }
+    .lightbox-arrow { width: 36px; height: 36px; }
+    .lightbox-arrow--prev { left: 8px; }
+    .lightbox-arrow--next { right: 8px; }
+    .lightbox-counter { right: 15px; bottom: 14px; }
+}
+
+@media (max-width: 430px) {
+    .brand img { width: 132px; }
+    .lightbox-stage { padding: 44px 37px 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .principles .principles-grid, .principles::before, .principles::after, .projects::before, .projects::after, .contact .contact-pattern, .intro.scroll-scene::after, .expertise.scroll-scene::after { opacity: 1; transform: none; transition: none; }
+}

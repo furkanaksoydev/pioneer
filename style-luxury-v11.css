@@ -1,0 +1,129 @@
+@import url("./style-luxury-v10.css");
+
+/* Project details as a restrained architectural dossier, not a stack of generic cards. */
+.project-details {
+    position: relative;
+    padding-top: 42px;
+    background:
+        linear-gradient(150deg, rgba(220,188,111,.055), transparent 28%),
+        #0c131c;
+}
+.project-details::before {
+    position: absolute;
+    top: 21px;
+    right: 27px;
+    width: 54px;
+    height: 1px;
+    content: '';
+    background: linear-gradient(90deg, var(--gold), transparent);
+}
+.project-details > .project-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 16px;
+    padding: 7px 10px;
+    border: 1px solid rgba(222,190,115,.27);
+    color: var(--gold-bright);
+    background: rgba(224,192,116,.045);
+    font-size: 8px;
+    letter-spacing: .17em;
+}
+.project-details > .project-location::before { width: 5px; height: 5px; content: ''; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(207,173,101,.1); }
+.project-details > p:not(.project-location) {
+    margin: 0 0 28px;
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(222,190,115,.2);
+    border-left: 0;
+    color: #bfc2c2;
+    background: transparent;
+    font-size: 13px;
+    line-height: 1.9;
+}
+.detail-list { display: grid; gap: 8px; margin: 0 0 30px; }
+.detail-list div {
+    display: grid;
+    min-height: 76px;
+    padding: 15px 16px 16px 61px;
+    align-content: center;
+    border: 1px solid rgba(222,190,115,.14);
+    background: rgba(255,255,255,.018);
+    box-shadow: none;
+    counter-increment: detail;
+    transform: none;
+}
+.detail-list { counter-reset: detail; }
+.detail-list div::before {
+    top: 50%;
+    bottom: auto;
+    left: 16px;
+    display: grid;
+    width: 29px;
+    height: 29px;
+    place-items: center;
+    content: counter(detail, decimal-leading-zero);
+    border: 1px solid rgba(222,190,115,.42);
+    border-radius: 50%;
+    color: var(--gold-bright);
+    background: #101923;
+    font-family: var(--serif);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    opacity: 1;
+    transform: translateY(-50%);
+    transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.detail-list div::after { display: none; }
+.detail-list div:hover {
+    border-color: rgba(234,202,126,.5);
+    background: linear-gradient(90deg, rgba(212,178,101,.11), rgba(255,255,255,.025));
+    box-shadow: inset 3px 0 0 var(--gold), 0 9px 24px rgba(0,0,0,.16);
+    transform: translateX(0);
+}
+.detail-list div:hover::before { border-color: var(--gold-bright); color: #0c131c; background: var(--gold-bright); transform: translateY(-50%) scale(1.06); }
+.detail-list dt { margin-bottom: 4px; color: var(--gold); font-family: var(--serif); font-size: 8px; font-weight: 600; letter-spacing: .16em; }
+.detail-list dd { color: #f0eee8; font-family: var(--serif); font-size: 15px; font-weight: 500; line-height: 1.34; }
+.project-details .button { min-height: 49px; border-color: rgba(228,197,121,.34); }
+
+/* 1400px */
+@media (max-width: 1400px) {
+    .project-details { padding-top: 38px; }
+}
+
+/* 1200px */
+@media (max-width: 1200px) {
+    .detail-list div { min-height: 72px; padding-left: 56px; }
+    .detail-list div::before { left: 14px; width: 27px; height: 27px; }
+}
+
+/* 992px */
+@media (max-width: 992px) {
+    .project-details::before { right: 31px; }
+    .detail-list { grid-template-columns: 1fr 1fr; gap: 9px; }
+    .detail-list div { min-height: 82px; }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .project-details { padding-top: 29px; }
+    .project-details::before { top: 15px; right: 25px; }
+    .detail-list { grid-template-columns: 1fr; }
+}
+
+/* 576px */
+@media (max-width: 576px) {
+    .project-details::before { right: 16px; width: 38px; }
+    .project-details > p:not(.project-location) { margin-bottom: 21px; padding-bottom: 16px; font-size: 11px; }
+    .detail-list div { min-height: 69px; padding: 13px 13px 14px 53px; }
+    .detail-list div::before { left: 13px; width: 25px; height: 25px; font-size: 7px; }
+    .detail-list dd { font-size: 14px; }
+}
+
+/* 430px */
+@media (max-width: 430px) {
+    .project-details { padding-top: 26px; }
+    .project-details > .project-location { margin-bottom: 13px; }
+    .detail-list { gap: 6px; }
+    .detail-list div { min-height: 64px; }
+}

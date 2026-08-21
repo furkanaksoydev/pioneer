@@ -1,0 +1,139 @@
+@import url("./style-luxury-v2.css");
+
+/* Licensed webfont files can be placed in assets/fonts; local installs are used during development. */
+@font-face {
+    font-family: 'Arboria';
+    src: local('Arboria'), local('Arboria Medium'), url('./assets/fonts/Arboria-Medium.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Walbaum';
+    src: local('Walbaum'), local('Walbaum Pro'), url('./assets/fonts/Walbaum-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+:root {
+    --ink: #06090e;
+    --ink-soft: #121a24;
+    --ink-raised: #1a2430;
+    --paper: #f2eee5;
+    --paper-muted: #c7c0b4;
+    --muted: #9a9387;
+    --line: rgba(207, 171, 91, .27);
+    --line-soft: rgba(255, 255, 255, .11);
+    --gold: #cfad65;
+    --gold-bright: #f1d99e;
+    --gold-deep: #92703a;
+    --serif: 'Arboria', 'Montserrat', sans-serif;
+    --sans: 'Walbaum', Georgia, serif;
+}
+
+body { letter-spacing: .006em; }
+h1, h2, h3, em, .project-meta dd, .detail-list dd, .modal-header h2, .contact-direct a, .visual-plaque strong, .expertise-list summary { font-family: var(--serif); }
+
+/* A steel-blue charcoal replaces the former muddy brown dialogue surface. */
+.project-dialog, .project-details { background: #101720; }
+.modal-header { background: #111923; }
+.gallery-column { background: #0a1017; }
+.project-dialog { border-color: rgba(222, 190, 113, .4); box-shadow: 0 28px 90px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.035); }
+.project-details > p:not(.project-location) { color: #c4c4bd; }
+
+/* Rich, engraved button treatment with a quiet metallic sheen. */
+.button--gold {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 56px;
+    padding-inline: 26px;
+    border: 1px solid rgba(255, 239, 191, .7);
+    color: #16130e;
+    background: linear-gradient(108deg, #765628 0%, #c89a4d 18%, #f5dfa2 49%, #bb8b40 76%, #6e5028 100%);
+    background-size: 180% 100%;
+    box-shadow: inset 0 0 0 1px rgba(65,42,14,.22), inset 0 1px 0 rgba(255,255,255,.62), 0 11px 0 #765825, 0 18px 34px rgba(0,0,0,.28);
+    text-shadow: 0 1px rgba(255,255,255,.22);
+    transition: transform 360ms cubic-bezier(.2,.8,.2,1), box-shadow 360ms cubic-bezier(.2,.8,.2,1), background-position 520ms ease, filter 360ms ease;
+}
+.button--gold::before { position: absolute; z-index: 0; inset: 4px; content: ''; border: 1px solid rgba(73,50,16,.28); pointer-events: none; }
+.button--gold::after { position: absolute; z-index: 0; top: -70%; bottom: -70%; left: -42%; width: 30%; content: ''; background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent); pointer-events: none; transform: skewX(-23deg); transition: left 650ms cubic-bezier(.2,.8,.2,1); }
+.button--gold:hover { color: #0b0b0a; background-position: 100% 0; filter: saturate(1.08) brightness(1.06); transform: translateY(-5px); box-shadow: inset 0 0 0 1px rgba(65,42,14,.16), inset 0 1px 0 rgba(255,255,255,.78), 0 15px 0 #5d441f, 0 29px 42px rgba(0,0,0,.39); }
+.button--gold:hover::after { left: 115%; }
+.button--gold:active { transform: translateY(6px); box-shadow: inset 0 1px 6px rgba(59,39,10,.38), 0 3px 0 #5d441f, 0 8px 16px rgba(0,0,0,.28); }
+
+/* A restrained architectural grid replaces the previous diamond motif. */
+.principles { background: #0d151e; }
+.principles::before {
+    opacity: 1;
+    background-image:
+        linear-gradient(90deg, rgba(212,178,101,.075) 1px, transparent 1px),
+        linear-gradient(rgba(212,178,101,.075) 1px, transparent 1px),
+        radial-gradient(circle at 0 0, transparent 0 41px, rgba(212,178,101,.13) 41px 42px, transparent 42px),
+        radial-gradient(circle at 100% 100%, transparent 0 41px, rgba(212,178,101,.13) 41px 42px, transparent 42px);
+    background-position: center;
+    background-size: 82px 82px, 82px 82px, 164px 164px, 164px 164px;
+    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+}
+.principles::after { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; content: ''; background: linear-gradient(transparent, rgba(220,187,105,.25) 18%, rgba(220,187,105,.25) 82%, transparent); pointer-events: none; }
+.principles-grid { z-index: 1; }
+.principle { border-color: rgba(213,179,101,.24); background: linear-gradient(150deg, rgba(10,15,21,.38), transparent 65%); }
+
+/* More precise close affordance: fine circular frame, no rotating × glyph. */
+.icon-button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    border: 1px solid rgba(223,192,119,.47);
+    border-radius: 50%;
+    color: transparent;
+    background: rgba(8,13,18,.34);
+    box-shadow: inset 0 0 0 4px rgba(224,194,121,.035), 0 4px 12px rgba(0,0,0,.15);
+    transform: none;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.icon-button::before, .icon-button::after { position: absolute; top: 50%; left: 50%; width: 13px; height: 1px; content: ''; background: var(--gold-bright); transform: translate(-50%, -50%) rotate(45deg); transition: background var(--transition), width var(--transition); }
+.icon-button::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.icon-button:hover { background: #cba762; border-color: #f6df9f; box-shadow: 0 0 0 5px rgba(207,172,97,.12), 0 8px 20px rgba(0,0,0,.26); transform: scale(1.06); }
+.icon-button:hover::before, .icon-button:hover::after { width: 15px; background: #101720; }
+
+/* Expanded footer */
+.site-footer { padding: 0; border-top: 1px solid rgba(213,178,99,.31); background: #090f16; }
+.footer-top { display: grid; grid-template-columns: minmax(280px, 1.6fr) minmax(150px, .6fr) minmax(220px, .7fr); gap: clamp(45px, 9vw, 145px); padding: 88px 0 72px; }
+.footer-intro { max-width: 370px; }
+.footer-brand { display: inline-flex; margin-bottom: 24px; }
+.footer-brand img { width: 138px; max-height: 51px; }
+.footer-intro > p { margin: 0 0 27px; color: #aeb2b5; font-size: 14px; line-height: 1.8; }
+.footer-contact-link { display: inline-flex; gap: 12px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--gold); color: var(--gold-bright); font-size: 10px; font-weight: 700; letter-spacing: .15em; text-decoration: none; text-transform: uppercase; transition: color var(--transition), gap var(--transition); }
+.footer-contact-link:hover { gap: 18px; color: #fff0bd; }
+.footer-nav, .footer-address { display: grid; align-content: start; gap: 12px; }
+.footer-nav > p, .footer-address > p { margin: 0 0 10px; color: var(--gold); font-family: var(--serif); font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.footer-nav a, .footer-address a, .footer-address span { color: #d9d8d2; font-size: 13px; font-style: normal; text-decoration: none; transition: color var(--transition), transform var(--transition); }
+.footer-nav a:hover, .footer-address a:hover { color: var(--gold-bright); transform: translateX(4px); }
+.footer-address span { margin-top: 10px; color: #939aa2; line-height: 1.8; }
+.footer-bottom { display: flex; gap: 20px; justify-content: space-between; padding: 20px 0 23px; border-top: 1px solid rgba(213,178,99,.2); }
+.footer-bottom p { margin: 0; color: #7b838d; font-size: 9px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+
+@media (max-width: 992px) {
+    .footer-top { grid-template-columns: 1.25fr .7fr .85fr; gap: 45px; padding: 70px 0 55px; }
+}
+
+@media (max-width: 768px) {
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 42px 30px; }
+    .footer-intro { grid-column: 1 / -1; max-width: 490px; }
+}
+
+@media (max-width: 576px) {
+    .button--gold { min-height: 53px; padding-inline: 20px; box-shadow: inset 0 0 0 1px rgba(65,42,14,.22), inset 0 1px 0 rgba(255,255,255,.62), 0 8px 0 #765825, 0 15px 27px rgba(0,0,0,.25); }
+    .footer-top { grid-template-columns: 1fr; gap: 34px; padding: 59px 0 45px; }
+    .footer-intro { grid-column: auto; }
+    .footer-bottom { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 430px) {
+    .icon-button { width: 36px; height: 36px; flex-basis: 36px; }
+    .footer-top { padding-top: 51px; }
+}
