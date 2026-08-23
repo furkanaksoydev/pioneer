@@ -1,0 +1,216 @@
+@import url("./style-luxury-v12.css");
+
+/* Pioneer project archive / tum-isler */
+.infinite-project-gallery {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    padding-bottom: clamp(5.5rem, 9vw, 9rem);
+    background:
+        radial-gradient(circle at 12% 42%, rgba(202, 168, 94, 0.12), transparent 31rem),
+        radial-gradient(circle at 86% 76%, rgba(128, 92, 37, 0.12), transparent 28rem),
+        #070b11;
+    border-top: 1px solid rgba(218, 188, 119, 0.18);
+    border-bottom: 1px solid rgba(218, 188, 119, 0.16);
+}
+
+.infinite-project-gallery::before,
+.infinite-project-gallery::after {
+    position: absolute;
+    z-index: -1;
+    width: min(44vw, 40rem);
+    aspect-ratio: 1;
+    content: "";
+    pointer-events: none;
+    opacity: 0.65;
+    background:
+        repeating-linear-gradient(45deg, transparent 0 17px, rgba(215, 182, 104, 0.075) 18px 19px, transparent 20px 37px),
+        repeating-linear-gradient(-45deg, transparent 0 17px, rgba(215, 182, 104, 0.075) 18px 19px, transparent 20px 37px);
+    mask-image: radial-gradient(circle, #000 0, transparent 68%);
+}
+
+.infinite-project-gallery::before {
+    top: -17rem;
+    left: -12rem;
+}
+
+.infinite-project-gallery::after {
+    right: -14rem;
+    bottom: -20rem;
+}
+
+.gallery-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: clamp(2rem, 7vw, 8rem);
+    margin-bottom: clamp(2.8rem, 5vw, 4.8rem);
+}
+
+.gallery-heading > div {
+    flex: 0 1 38rem;
+}
+
+.gallery-heading h2 {
+    margin: 0;
+}
+
+.gallery-heading > p {
+    max-width: 27rem;
+    margin: 0 0 0.45rem;
+    color: rgba(238, 232, 218, 0.72);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+.project-gallery-stream {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 1.4vw, 1.25rem);
+    width: max-content;
+    min-width: 100%;
+    padding: 0.45rem 0;
+}
+
+.project-gallery-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.8rem, 1.4vw, 1.25rem);
+    width: max-content;
+    will-change: transform;
+}
+
+.project-gallery-track--left {
+    animation: pioneer-gallery-left 64s linear infinite;
+}
+
+.project-gallery-track--right {
+    animation: pioneer-gallery-right 70s linear infinite;
+}
+
+.project-gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    height: clamp(12.5rem, 19vw, 17.5rem);
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(221, 190, 118, 0.2);
+    background: #0b1119;
+    box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.26);
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1), border-color 420ms ease, box-shadow 420ms ease, filter 380ms ease, opacity 380ms ease;
+}
+
+.project-gallery-item::before {
+    position: absolute;
+    z-index: 1;
+    top: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    left: 0.6rem;
+    border: 1px solid rgba(232, 205, 143, 0);
+    content: "";
+    pointer-events: none;
+    transition: border-color 420ms ease;
+}
+
+.project-gallery-item img {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transform: scale(1.002);
+    transition: transform 850ms cubic-bezier(0.16, 1, 0.3, 1), filter 380ms ease;
+}
+
+.project-gallery-stream:hover .project-gallery-item {
+    filter: brightness(0.48) saturate(0.54) blur(1.6px);
+    opacity: 0.68;
+}
+
+.project-gallery-stream:hover .project-gallery-track {
+    animation-play-state: paused;
+}
+
+.project-gallery-item:hover {
+    z-index: 2;
+    border-color: rgba(234, 203, 132, 0.88);
+    filter: none !important;
+    opacity: 1 !important;
+    box-shadow: 0 1.6rem 3.8rem rgba(0, 0, 0, 0.5), 0 0 1.8rem rgba(203, 168, 94, 0.2);
+    transform: scale(1.065);
+}
+
+.project-gallery-item:hover::before {
+    border-color: rgba(239, 213, 157, 0.52);
+}
+
+.project-gallery-item:hover img {
+    filter: none;
+    transform: scale(1.08);
+}
+
+@keyframes pioneer-gallery-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - clamp(0.4rem, 0.7vw, 0.625rem))); }
+}
+
+@keyframes pioneer-gallery-right {
+    from { transform: translateX(calc(-50% - clamp(0.4rem, 0.7vw, 0.625rem))); }
+    to { transform: translateX(0); }
+}
+
+@media (max-width: 1400px) {
+    .project-gallery-track--left { animation-duration: 59s; }
+    .project-gallery-track--right { animation-duration: 65s; }
+}
+
+@media (max-width: 1200px) {
+    .gallery-heading { gap: 3.25rem; }
+    .project-gallery-item { height: clamp(11.5rem, 20vw, 15.25rem); }
+}
+
+@media (max-width: 992px) {
+    .infinite-project-gallery::before { left: -16rem; }
+    .gallery-heading { align-items: start; flex-direction: column; gap: 1.35rem; }
+    .gallery-heading > p { max-width: 38rem; margin-bottom: 0; }
+    .project-gallery-item { height: clamp(10.5rem, 25vw, 13.5rem); }
+}
+
+@media (max-width: 768px) {
+    .infinite-project-gallery { padding-bottom: 4.5rem; }
+    .project-gallery-stream { gap: 0.75rem; }
+    .project-gallery-track { gap: 0.75rem; }
+    .project-gallery-item { height: clamp(9.25rem, 31vw, 12rem); }
+    .project-gallery-track--left { animation-duration: 53s; }
+    .project-gallery-track--right { animation-duration: 58s; }
+    .project-gallery-item::before { top: 0.45rem; right: 0.45rem; bottom: 0.45rem; left: 0.45rem; }
+}
+
+@media (max-width: 576px) {
+    .gallery-heading > p { font-size: 0.84rem; line-height: 1.75; }
+    .project-gallery-item { height: clamp(8.75rem, 37vw, 10.75rem); }
+    .project-gallery-item:hover { transform: scale(1.035); }
+}
+
+@media (max-width: 430px) {
+    .infinite-project-gallery { padding-bottom: 3.75rem; }
+    .gallery-heading { gap: 1rem; margin-bottom: 2.2rem; }
+    .project-gallery-stream, .project-gallery-track { gap: 0.55rem; }
+    .project-gallery-item { height: clamp(7.75rem, 40vw, 9.25rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-gallery-stream {
+        width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(218, 188, 119, 0.55) transparent;
+    }
+
+    .project-gallery-track {
+        animation: none;
+    }
+}
