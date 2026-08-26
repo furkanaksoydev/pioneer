@@ -1,0 +1,80 @@
+@import url("./style-luxury-v15.css");
+
+/* Compact construction catalogue: more rhythm, less oversized visual weight. */
+.construction-service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.construction-service-grid article { min-height: 11.25rem; padding: 1.35rem 1.25rem 1.2rem; }
+.construction-service-grid span { margin-bottom: 1.85rem; font-size: 1.05rem; }
+.construction-service-grid h3 { margin-bottom: 0.5rem; font-size: clamp(1.05rem, 1.25vw, 1.36rem); line-height: 1.1; }
+.construction-service-grid p { font-size: 0.73rem; line-height: 1.62; }
+.construction-service-grid article::after { display: block; width: 1.6rem; height: 1px; margin-top: 1rem; content: ''; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.7; transition: width 340ms ease; }
+.construction-service-grid article:hover::after { width: 3.3rem; }
+
+/* Community reviews: a restrained, continuously moving proof layer below contact. */
+.community-reviews { position: relative; overflow: hidden; padding: clamp(5.5rem, 9vw, 9rem) 0; border-top: 1px solid rgba(224, 193, 122, 0.16); background: #070d14; }
+.community-reviews::before { position: absolute; top: -15rem; left: -11rem; width: min(46vw, 38rem); aspect-ratio: 1; content: ''; border: 1px solid rgba(224, 193, 122, 0.12); border-radius: 50%; box-shadow: 0 0 0 3.8rem rgba(224, 193, 122, 0.024), 0 0 0 7.6rem rgba(224, 193, 122, 0.016); pointer-events: none; }
+.community-reviews__heading { position: relative; display: flex; align-items: end; justify-content: space-between; gap: 3rem; margin-bottom: 3.4rem; }
+.community-reviews__heading h2 { margin: 0; color: var(--paper); font-size: clamp(3rem, 4.9vw, 5.2rem); font-weight: 400; letter-spacing: -0.05em; line-height: 0.92; }
+.community-reviews__heading > p { max-width: 28rem; margin: 0; color: rgba(238, 233, 221, 0.67); font-size: 0.91rem; line-height: 1.85; }
+.review-stream { position: relative; width: max-content; min-width: 100%; overflow: visible; }
+.review-stream__track { display: flex; gap: 1rem; width: max-content; padding: 0.65rem 0; animation: review-river 70s linear infinite; }
+.review-stream:hover .review-stream__track { animation-play-state: paused; }
+.review-card { display: grid; width: min(24rem, 78vw); min-height: 12.6rem; padding: 1.35rem; grid-template-columns: 2.5rem 1fr; grid-template-rows: auto 1fr auto; column-gap: 0.9rem; border: 1px solid rgba(224, 193, 122, 0.22); background: linear-gradient(145deg, rgba(21, 32, 44, 0.95), rgba(7, 13, 20, 0.92)); box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.22); transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1), border-color 360ms ease; }
+.review-card:hover { border-color: rgba(238, 210, 147, 0.55); transform: translateY(-0.32rem); }
+.review-card__initial { display: grid; width: 2.4rem; height: 2.4rem; grid-row: span 2; place-items: center; border: 1px solid rgba(225, 194, 124, 0.5); border-radius: 50%; color: var(--gold-bright); font-family: "Playfair Display", serif; font-size: 1.15rem; }
+.review-card__name { color: var(--paper); font-family: "Montserrat", sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.review-card__meta { margin-top: 0.2rem; color: var(--gold); font-family: "Montserrat", sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.review-card__text { grid-column: 1 / -1; margin: 1.25rem 0 0; color: rgba(239, 234, 222, 0.71); font-size: 0.84rem; line-height: 1.75; }
+.review-card__image { width: 3.15rem; height: 2.4rem; margin-top: 1rem; grid-column: 1 / -1; border: 1px solid rgba(224, 193, 122, 0.34); object-fit: cover; }
+@keyframes review-river { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 0.5rem)); } }
+
+/* Standalone community page. */
+.comments-page { min-height: 100vh; background: #070d14; }
+.comments-page-header { position: relative; z-index: 3; border-bottom: 1px solid rgba(224, 193, 122, 0.18); background: rgba(7, 13, 20, 0.94); }
+.comments-page-header__inner { display: flex; min-height: 6.5rem; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.comments-page-header .brand img { width: 10rem; max-height: 3.5rem; }
+.comments-page-back { color: var(--gold-bright); font-family: "Montserrat", sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-decoration: none; text-transform: uppercase; }
+.comments-hero { position: relative; overflow: hidden; min-height: 32rem; isolation: isolate; }
+.comments-hero img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.62) brightness(0.42); }
+.comments-hero::after { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(92deg, rgba(7, 13, 20, 0.96), rgba(7, 13, 20, 0.73) 52%, rgba(7, 13, 20, 0.28)), linear-gradient(0deg, #070d14, transparent 52%); }
+.comments-hero .site-shell { display: flex; min-height: inherit; padding-top: 5rem; padding-bottom: 5rem; flex-direction: column; justify-content: center; }
+.comments-hero h1 { max-width: 54rem; margin: 0 0 1.4rem; color: var(--paper); font-size: clamp(3.5rem, 7vw, 7.5rem); font-weight: 400; letter-spacing: -0.06em; line-height: 0.87; }
+.comments-hero p:not(.eyebrow) { max-width: 39rem; margin: 0; color: rgba(239, 234, 222, 0.75); font-size: 1rem; line-height: 1.9; }
+.comments-layout { display: grid; grid-template-columns: minmax(0, 0.87fr) minmax(22rem, 1.13fr); gap: clamp(3rem, 9vw, 10rem); padding-top: clamp(5rem, 9vw, 9.5rem); padding-bottom: clamp(5rem, 9vw, 9.5rem); }
+.comments-layout h2, .comments-feed-heading h2 { margin: 0; color: var(--paper); font-size: clamp(2.6rem, 4.7vw, 5.2rem); font-weight: 400; letter-spacing: -0.05em; line-height: 0.92; }
+.comments-guidance > p:not(.eyebrow) { max-width: 34rem; margin: 1.5rem 0 2rem; color: rgba(239, 234, 222, 0.68); font-size: 0.94rem; line-height: 1.9; }
+.comment-principles { display: grid; gap: 0.8rem; padding: 0; margin: 0; list-style: none; }
+.comment-principles li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.7rem; padding-top: 0.8rem; border-top: 1px solid rgba(224, 193, 122, 0.18); color: rgba(239, 234, 222, 0.63); font-size: 0.8rem; line-height: 1.65; }
+.comment-principles span { color: var(--gold); font-family: "Playfair Display", serif; font-size: 1.1rem; font-style: italic; }
+.comment-form { position: relative; padding: clamp(1.6rem, 3.4vw, 3.4rem); border: 1px solid rgba(224, 193, 122, 0.28); background: linear-gradient(145deg, rgba(24, 35, 47, 0.94), rgba(7, 13, 20, 0.94)); box-shadow: 0 2rem 4.5rem rgba(0, 0, 0, 0.26); }
+.comment-form::before { position: absolute; top: 1rem; left: 1rem; width: 2.25rem; height: 2.25rem; content: ''; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.comment-form h3 { margin: 0 0 1.8rem; color: var(--paper); font-size: clamp(1.7rem, 2.5vw, 2.35rem); font-weight: 400; letter-spacing: -0.035em; }
+.comment-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.comment-field { display: grid; gap: 0.45rem; }
+.comment-field--full { grid-column: 1 / -1; }
+.comment-field label, .comment-consent { color: var(--gold); font-family: "Montserrat", sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
+.comment-field input, .comment-field select, .comment-field textarea { width: 100%; padding: 0.8rem 0; border: 0; border-bottom: 1px solid rgba(239, 234, 222, 0.24); border-radius: 0; outline: 0; color: var(--paper); background: transparent; font-size: 0.88rem; transition: border-color 240ms ease; }
+.comment-field textarea { min-height: 9rem; resize: vertical; }
+.comment-field input:focus, .comment-field select:focus, .comment-field textarea:focus { border-bottom-color: var(--gold-bright); }
+.comment-field select option { color: var(--paper); background: #0a1119; }
+.comment-upload { position: relative; display: flex; min-height: 4.7rem; align-items: center; padding: 1rem; border: 1px dashed rgba(224, 193, 122, 0.38); color: rgba(239, 234, 222, 0.68); background: rgba(7, 13, 20, 0.42); font-size: 0.76rem; line-height: 1.55; }
+.comment-upload input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.comment-upload strong { color: var(--gold-bright); font-weight: 500; }
+.comment-upload-note { margin: 0.55rem 0 0; color: rgba(239, 234, 222, 0.48); font-size: 0.7rem; line-height: 1.55; }
+.comment-consent { display: flex; gap: 0.65rem; align-items: start; margin: 1.3rem 0; color: rgba(239, 234, 222, 0.68); font-size: 0.58rem; line-height: 1.65; letter-spacing: 0.08em; }
+.comment-consent input { width: 1rem; height: 1rem; margin: 0.12rem 0 0; accent-color: var(--gold); }
+.comment-honeypot { position: absolute !important; left: -9999px !important; opacity: 0 !important; }
+.comment-form-status { min-height: 1.4rem; margin: 1rem 0 0; color: rgba(239, 234, 222, 0.72); font-size: 0.78rem; line-height: 1.55; }
+.comment-form-status.is-success { color: #d9c28a; }.comment-form-status.is-error { color: #e9a8a8; }
+.comments-feed { padding: clamp(4.8rem, 8vw, 8rem) 0; border-top: 1px solid rgba(224, 193, 122, 0.16); background: #0a1119; }
+.comments-feed-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; }
+.comments-feed-heading p { max-width: 26rem; margin: 0; color: rgba(239, 234, 222, 0.64); font-size: 0.87rem; line-height: 1.8; }
+.comments-feed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.comments-feed-grid .review-card { width: auto; min-height: 14.5rem; }
+.comments-empty { grid-column: 1 / -1; padding: 2rem; border: 1px dashed rgba(224, 193, 122, 0.3); color: rgba(239, 234, 222, 0.62); }
+
+@media (max-width: 1400px) { .construction-service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1200px) { .construction-service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .comments-feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 992px) { .construction-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .comments-layout { grid-template-columns: 1fr; } .comments-guidance { max-width: 43rem; } }
+@media (max-width: 768px) { .community-reviews__heading, .comments-feed-heading { align-items: start; flex-direction: column; gap: 1.2rem; } .comments-page-header__inner { min-height: 5.5rem; } .comments-page-header .brand img { width: 8rem; } .comments-hero { min-height: 28rem; } .comments-feed-grid { grid-template-columns: 1fr; } }
+@media (max-width: 576px) { .construction-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .construction-service-grid article { min-height: 9.5rem; padding: 1rem 0.9rem; } .construction-service-grid span { margin-bottom: 1.25rem; } .construction-service-grid h3 { font-size: 1rem; } .construction-service-grid p { font-size: 0.66rem; } .comment-form-grid { grid-template-columns: 1fr; } .comment-field--full { grid-column: auto; } .comments-page-header__inner, .comments-hero .site-shell, .comments-layout, .comments-feed .site-shell { width: calc(100% - 36px); } }
+@media (max-width: 430px) { .construction-service-grid { gap: 0; } .construction-service-grid h3 { font-size: 0.94rem; } .construction-service-grid p { font-size: 0.63rem; } .comments-page-back { font-size: 0; }.comments-page-back::before { content: '←'; font-size: 1.05rem; } }

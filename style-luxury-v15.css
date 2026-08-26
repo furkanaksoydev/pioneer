@@ -1,0 +1,218 @@
+@import url("./style-luxury-v14.css");
+
+/* A single dark material system for the architecture and construction brands. */
+:root {
+    --ink: #070d14;
+    --ink-soft: #0a1119;
+    --ink-raised: #101a25;
+    --paper: #eee9dd;
+    --paper-muted: #bdb8ae;
+    --muted: #9299a1;
+    --line: rgba(220, 190, 119, 0.25);
+    --line-soft: rgba(235, 229, 214, 0.1);
+    --gold: #d4b26d;
+    --gold-bright: #f1d99e;
+    --gold-deep: #9b773d;
+}
+
+body { background: #070d14; }
+.architecture-panel { position: relative; width: 85vw; min-height: 100vh; overflow: clip; background: #070d14; transition: width 700ms cubic-bezier(0.16, 1, 0.3, 1), height 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+.architecture-panel .site-header { right: 15vw; width: auto; background: transparent; transition: right 700ms cubic-bezier(0.16, 1, 0.3, 1), padding var(--transition), background var(--transition); }
+.architecture-panel .site-header.is-scrolled { background: rgba(7, 13, 20, 0.44); }
+
+/* Light background sections are converted into the same blue-black field as the rest of the site. */
+.intro, .expertise { position: relative; color: var(--paper); background: #070d14; }
+.intro::before, .expertise::after { position: absolute; z-index: 0; content: ''; pointer-events: none; }
+.intro::before { top: 0; left: 0; width: min(38vw, 35rem); height: 100%; opacity: 0.38; background: linear-gradient(135deg, rgba(203, 168, 91, 0.075), transparent 62%); }
+.expertise::after { right: -13rem; bottom: -15rem; width: min(46vw, 40rem); aspect-ratio: 1; border: 1px solid rgba(218, 186, 111, 0.1); border-radius: 50%; box-shadow: 0 0 0 3.5rem rgba(218, 186, 111, 0.025), 0 0 0 7rem rgba(218, 186, 111, 0.018); }
+.intro .site-shell, .expertise .site-shell { position: relative; z-index: 1; }
+.intro .eyebrow, .expertise .eyebrow { color: var(--gold); }
+.intro h2, .expertise h2 { color: var(--paper); }
+.intro-copy p { color: rgba(232, 227, 216, 0.69); }
+.expertise-list { border-top-color: rgba(221, 190, 119, 0.24); }
+.expertise-list details { border-bottom-color: rgba(221, 190, 119, 0.2); }
+.expertise-list summary { color: var(--paper); }
+.expertise-list summary span { color: var(--gold); }
+.expertise-list details p { color: rgba(232, 227, 216, 0.64); }
+.expertise-list details.is-expanded summary { color: var(--gold-bright); }
+.expertise-visual::before { background: linear-gradient(145deg, #735529, #c99f54 50%, #8f6c34); }
+.expertise-visual:hover img { box-shadow: 0 20px 38px rgba(0, 0, 0, 0.42); }
+.expertise-visual:hover .visual-plaque { background: #0c151f; box-shadow: 0 20px 38px rgba(0, 0, 0, 0.42); }
+
+.nav-construction-link { position: relative; padding: 9px 0; color: rgba(255,255,255,.88); background: transparent; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: color var(--transition); }
+.nav-construction-link::after { position: absolute; right: 0; bottom: 2px; left: 0; height: 1px; content: ''; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform var(--transition); }
+.nav-construction-link:hover { color: var(--gold-bright); }
+.nav-construction-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Local SEO editoral block on the architecture side. */
+.local-seo { position: relative; overflow: hidden; background: #070d14; border-block: 1px solid rgba(220, 190, 119, 0.14); }
+.local-seo::before { position: absolute; top: -10rem; right: -12rem; width: min(50vw, 46rem); aspect-ratio: 1; content: ''; opacity: 0.58; background: repeating-linear-gradient(45deg, transparent 0 20px, rgba(217, 185, 110, 0.07) 21px 22px, transparent 23px 42px), repeating-linear-gradient(-45deg, transparent 0 20px, rgba(217, 185, 110, 0.07) 21px 22px, transparent 23px 42px); mask-image: radial-gradient(circle, #000, transparent 67%); pointer-events: none; }
+.local-seo-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.75fr); gap: clamp(3.5rem, 9vw, 10rem); align-items: center; }
+.local-seo-intro h2 { margin-bottom: 1.7rem; font-size: clamp(3rem, 4.8vw, 5rem); letter-spacing: -0.048em; line-height: 0.94; }
+.local-seo-intro > p:not(.eyebrow) { max-width: 42rem; margin-bottom: 2rem; color: rgba(238, 233, 221, 0.72); font-size: 0.98rem; line-height: 1.9; }
+.local-seo-intro strong { color: var(--gold-bright); font-weight: 500; }
+.local-seo-keywords { position: relative; display: grid; grid-template-columns: 4.2rem 1fr; gap: 1.2rem; padding: clamp(1.75rem, 3vw, 2.75rem); border: 1px solid rgba(225, 193, 122, 0.26); background: linear-gradient(145deg, rgba(229, 197, 125, 0.09), rgba(16, 26, 37, 0.35)); box-shadow: 0 1.5rem 3.4rem rgba(0, 0, 0, 0.25); }
+.local-seo-keywords > span { color: var(--gold); font-family: "Playfair Display", serif; font-size: 3rem; line-height: 0.8; }
+.local-seo-keywords p { margin-bottom: 0.6rem; color: var(--gold); font-family: "Montserrat", sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+.local-seo-keywords h3 { margin-bottom: 1.2rem; color: var(--paper); font-size: clamp(1.35rem, 2vw, 1.9rem); font-weight: 400; line-height: 1.15; }
+.local-seo-keywords ul { display: grid; gap: 0.45rem; padding: 0; margin: 0; color: rgba(238, 233, 221, 0.67); font-size: 0.84rem; line-height: 1.5; list-style: none; }
+.local-seo-keywords li { position: relative; padding-left: 1rem; }
+.local-seo-keywords li::before { position: absolute; top: 0.58em; left: 0; width: 0.35rem; height: 1px; content: ''; background: var(--gold); }
+
+/* Every footer keeps the service URLs discoverable without placing sales links in the body copy. */
+.site-footer { background: #070d14; }
+.footer-service-links { padding-top: 2.75rem; padding-bottom: 2.6rem; border-top: 1px solid rgba(220, 190, 119, 0.16); }
+.footer-service-links > p { margin-bottom: 1rem; color: var(--gold); font-family: "Montserrat", sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; }
+.footer-service-links > div { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; }
+.footer-service-links a { color: rgba(232, 227, 216, 0.63); font-size: 0.78rem; line-height: 1.55; text-decoration: none; transition: color var(--transition); }
+.footer-service-links a:hover { color: var(--gold-bright); }
+
+/* Split-screen construction brand: closed at 15%, open at 85%. */
+.construction-panel { position: fixed; z-index: 1300; top: 0; right: 0; bottom: 0; width: 15vw; overflow: hidden; border-left: 1px solid rgba(226, 195, 124, 0.34); color: var(--paper); background: #0a1119; box-shadow: -1.2rem 0 3rem rgba(0, 0, 0, 0.24); transition: width 700ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 700ms ease; }
+.construction-panel::before { position: absolute; z-index: 0; inset: 0; content: ''; opacity: 0.78; background: linear-gradient(165deg, rgba(7, 13, 20, 0.12), rgba(7, 13, 20, 0.94)), url('https://cdn.lavira360.com/pioneer/gorseller/WhatsApp%20Image%202026-08-20%20at%2022.24.24%20(5).jpeg') center / cover; transition: opacity 480ms ease; }
+.construction-panel::after { position: absolute; z-index: 1; top: 0; bottom: 0; left: 0; width: 1px; content: ''; opacity: 0.9; background: linear-gradient(transparent, var(--gold-bright), transparent); }
+.construction-closed-view { position: relative; z-index: 2; display: flex; width: 100%; height: 100%; padding: 2.2rem 1rem; flex-direction: column; align-items: center; justify-content: space-between; color: var(--paper); background: transparent; cursor: pointer; transition: background 420ms ease; }
+.construction-closed-view:hover { background: rgba(206, 170, 92, 0.08); }
+.construction-closed-mark { display: grid; width: 2.9rem; aspect-ratio: 1; place-items: center; border: 1px solid rgba(239, 211, 147, 0.65); border-radius: 50%; color: var(--gold-bright); font-family: "Playfair Display", serif; font-size: 1.55rem; transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), background 420ms ease; }
+.construction-closed-view:hover .construction-closed-mark { background: rgba(222, 187, 106, 0.12); transform: translateY(-0.25rem) scale(1.08); }
+.construction-closed-title { color: var(--paper); font-family: "Montserrat", sans-serif; font-size: clamp(0.8rem, 1.2vw, 1.1rem); font-weight: 600; letter-spacing: 0.21em; line-height: 1.4; text-align: center; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+.construction-closed-action { display: flex; gap: 0.55rem; align-items: center; color: var(--gold-bright); font-family: "Montserrat", sans-serif; font-size: 0.57rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+.construction-closed-action b { font-size: 1rem; font-weight: 400; }
+.construction-open-view { position: absolute; z-index: 3; inset: 0; overflow-y: auto; overscroll-behavior: contain; opacity: 0; pointer-events: none; scrollbar-width: thin; scrollbar-color: var(--gold-deep) #070d14; transition: opacity 380ms ease 80ms; }
+.construction-header { position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem clamp(1.6rem, 4vw, 5rem); border-bottom: 1px solid rgba(225, 193, 122, 0.18); background: rgba(7, 13, 20, 0.88); backdrop-filter: blur(18px); }
+.construction-brand, .construction-footer-brand { display: inline-flex; gap: 0.65rem; align-items: center; color: var(--paper); font-family: "Montserrat", sans-serif; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.18em; text-decoration: none; text-transform: uppercase; }
+.construction-brand img, .construction-footer-brand img { width: 8.4rem; max-height: 2.8rem; object-fit: contain; }
+.construction-brand span, .construction-footer-brand span { padding-left: 0.65rem; border-left: 1px solid rgba(225, 193, 122, 0.45); color: var(--gold); }
+.construction-close { padding: 0.72rem 0; border-bottom: 1px solid rgba(225, 193, 122, 0.5); color: var(--gold-bright); background: transparent; font-family: "Montserrat", sans-serif; font-size: 0.59rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.construction-main { overflow: hidden; background: #070d14; }
+.construction-hero { position: relative; display: grid; min-height: min(46rem, 80dvh); grid-template-columns: minmax(0, 0.94fr) minmax(24rem, 1.06fr); isolation: isolate; }
+.construction-hero > img { width: 100%; height: 100%; min-height: 100%; object-fit: cover; filter: saturate(0.72) brightness(0.66); }
+.construction-hero > div { position: relative; display: flex; padding: clamp(4rem, 8vw, 9rem) clamp(2rem, 7vw, 8rem); flex-direction: column; justify-content: center; background: linear-gradient(115deg, #0a141f, #070d14); }
+.construction-hero > div::before { position: absolute; top: 10%; right: -7rem; width: 14rem; aspect-ratio: 1; content: ''; border: 1px solid rgba(225, 193, 122, 0.2); transform: rotate(45deg); }
+.construction-hero h2, .construction-statement h2, .construction-section-heading h2, .construction-contact h2 { position: relative; margin-bottom: 1.6rem; color: var(--paper); font-size: clamp(3.1rem, 5.3vw, 6.2rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.9; }
+.construction-hero p:not(.eyebrow) { position: relative; max-width: 32rem; margin-bottom: 2rem; color: rgba(238, 233, 221, 0.73); font-size: 0.98rem; line-height: 1.9; }
+.construction-hero .button { position: relative; width: max-content; }
+.construction-statement, .construction-flow, .construction-contact { padding: clamp(5.5rem, 10vw, 11rem) clamp(1.6rem, 8vw, 10rem); }
+.construction-statement { max-width: 66rem; }
+.construction-statement > p:not(.eyebrow) { max-width: 59rem; margin: 0; color: rgba(238, 233, 221, 0.72); font-size: clamp(1rem, 1.45vw, 1.24rem); line-height: 1.95; }
+.construction-service-area { padding: clamp(5.5rem, 8vw, 9rem) clamp(1.6rem, 8vw, 10rem); border-block: 1px solid rgba(225, 193, 122, 0.17); background: #0a1119; }
+.construction-section-heading { max-width: 47rem; margin-bottom: clamp(2.8rem, 5vw, 5rem); }
+.construction-section-heading h2 { margin-bottom: 0; }
+.construction-service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(225, 193, 122, 0.2); border-left: 1px solid rgba(225, 193, 122, 0.2); }
+.construction-service-grid article { min-height: 15rem; padding: clamp(1.45rem, 2.3vw, 2.5rem); border-right: 1px solid rgba(225, 193, 122, 0.2); border-bottom: 1px solid rgba(225, 193, 122, 0.2); background: linear-gradient(135deg, transparent, rgba(222, 187, 106, 0.035)); transition: background 360ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1); }
+.construction-service-grid article:hover { z-index: 1; background: rgba(222, 187, 106, 0.09); transform: translateY(-0.25rem); }
+.construction-service-grid span, .construction-flow-grid span { display: block; margin-bottom: 3.5rem; color: var(--gold); font-family: "Playfair Display", serif; font-size: 1.35rem; font-style: italic; }
+.construction-service-grid h3, .construction-flow-grid h3 { margin-bottom: 0.85rem; color: var(--paper); font-size: clamp(1.35rem, 1.8vw, 2rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+.construction-service-grid p, .construction-flow-grid p { margin: 0; color: rgba(238, 233, 221, 0.61); font-size: 0.84rem; line-height: 1.75; }
+.construction-flow { background: #070d14; }
+.construction-flow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(225, 193, 122, 0.2); }
+.construction-flow-grid article { padding: clamp(1.7rem, 3vw, 3.4rem); background: #070d14; }
+.construction-flow-grid span { margin-bottom: 4rem; }
+.construction-contact { position: relative; overflow: hidden; border-top: 1px solid rgba(225, 193, 122, 0.18); background: radial-gradient(circle at 80% 22%, rgba(212, 178, 109, 0.14), transparent 31rem), #0a1119; }
+.construction-contact::after { position: absolute; top: -9rem; right: -4rem; width: 23rem; aspect-ratio: 1; content: ''; border: 1px solid rgba(225, 193, 122, 0.16); transform: rotate(45deg); }
+.construction-contact h2, .construction-contact p, .construction-contact .button { position: relative; z-index: 1; }
+.construction-contact > p:not(.eyebrow) { max-width: 36rem; margin-bottom: 2rem; color: rgba(238, 233, 221, 0.72); font-size: 0.96rem; line-height: 1.9; }
+.construction-footer { display: grid; grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr); gap: clamp(2.5rem, 7vw, 8rem); padding: clamp(3rem, 6vw, 6rem) clamp(1.6rem, 8vw, 10rem) 1.75rem; border-top: 1px solid rgba(225, 193, 122, 0.18); background: #070d14; }
+.construction-footer-brand { margin-bottom: 1.25rem; }
+.construction-footer > div > p { max-width: 21rem; margin: 0; color: rgba(238, 233, 221, 0.57); font-size: 0.8rem; line-height: 1.75; }
+.construction-footer nav > p { margin-bottom: 1.1rem; color: var(--gold); font-family: "Montserrat", sans-serif; font-size: 0.61rem; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; }
+.construction-footer nav > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem 1.25rem; }
+.construction-footer nav a { color: rgba(238, 233, 221, 0.65); font-size: 0.76rem; line-height: 1.5; text-decoration: none; transition: color var(--transition); }
+.construction-footer nav a:hover { color: var(--gold-bright); }
+.construction-footer small { grid-column: 1 / -1; padding-top: 1.3rem; border-top: 1px solid rgba(225, 193, 122, 0.12); color: rgba(238, 233, 221, 0.43); font-family: "Montserrat", sans-serif; font-size: 0.57rem; letter-spacing: 0.09em; text-transform: uppercase; }
+.architecture-rail { position: fixed; z-index: 1400; top: 0; bottom: 0; left: 0; display: none; width: 15vw; padding: 2rem 1rem; flex-direction: column; align-items: center; justify-content: space-between; border-right: 1px solid rgba(226, 195, 124, 0.34); color: var(--paper); background: #0a1119; box-shadow: 1.2rem 0 3rem rgba(0, 0, 0, 0.3); }
+.architecture-rail span { color: var(--gold-bright); font-family: "Playfair Display", serif; font-size: 2rem; }
+.architecture-rail small { color: var(--paper); font-family: "Montserrat", sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+.architecture-rail b { display: grid; width: 2.6rem; aspect-ratio: 1; place-items: center; border: 1px solid rgba(239, 211, 147, 0.58); border-radius: 50%; color: var(--gold-bright); font-size: 1.1rem; font-weight: 400; }
+
+body.construction-active { overflow: hidden; }
+body.construction-active .architecture-panel { width: 15vw; height: 100dvh; }
+body.construction-active .architecture-panel .site-header { right: 85vw; }
+body.construction-active .architecture-panel > :not(.architecture-rail) { opacity: 0; pointer-events: none; transition: opacity 260ms ease; }
+body.construction-active .architecture-rail { display: flex; }
+body.construction-active .construction-panel { width: 85vw; box-shadow: -2rem 0 5rem rgba(0, 0, 0, 0.44); }
+body.construction-active .construction-panel::before { opacity: 0; }
+body.construction-active .construction-closed-view { opacity: 0; pointer-events: none; }
+body.construction-active .construction-open-view { opacity: 1; pointer-events: auto; transition-delay: 220ms; }
+
+@media (max-width: 1400px) {
+    .construction-service-grid article { min-height: 13.4rem; }
+    .construction-footer { gap: 4rem; }
+}
+
+@media (max-width: 1200px) {
+    .architecture-panel { width: 82vw; }
+    .architecture-panel .site-header { right: 18vw; }
+    .construction-panel { width: 18vw; }
+    body.construction-active .architecture-panel { width: 18vw; }
+    body.construction-active .architecture-panel .site-header { right: 82vw; }
+    body.construction-active .construction-panel { width: 82vw; }
+    .construction-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .construction-footer nav > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 992px) {
+    .architecture-panel { width: 100%; overflow: clip; }
+    .architecture-panel .site-header { right: 0; }
+    .construction-panel { top: auto; width: 100%; height: 4.75rem; border-top: 1px solid rgba(226, 195, 124, 0.4); border-left: 0; }
+    .construction-panel::before { background: linear-gradient(90deg, rgba(7, 13, 20, 0.88), rgba(7, 13, 20, 0.48)), url('https://cdn.lavira360.com/pioneer/gorseller/WhatsApp%20Image%202026-08-20%20at%2022.24.24%20(5).jpeg') center / cover; }
+    .construction-panel::after { top: 0; right: 8%; bottom: auto; left: 8%; width: auto; height: 1px; }
+    .construction-closed-view { padding: 0 1.5rem; flex-direction: row; }
+    .construction-closed-mark { width: 2.35rem; font-size: 1.25rem; }
+    .construction-closed-title, .construction-closed-action { writing-mode: initial; transform: none; }
+    .construction-closed-title { flex: 1; font-size: 0.68rem; letter-spacing: 0.16em; line-height: 1.15; text-align: left; }
+    .construction-closed-action { font-size: 0.6rem; }
+    body.construction-active .architecture-panel { width: 100%; height: 100dvh; }
+    body.construction-active .architecture-panel .site-header { right: 0; }
+    body.construction-active .architecture-rail { display: none; }
+    body.construction-active .construction-panel { width: 100%; height: min(94dvh, 62rem); border-top-width: 2px; }
+    .construction-hero { grid-template-columns: 1fr; }
+    .construction-hero > img { height: 24rem; min-height: 0; }
+    .construction-hero > div { min-height: 28rem; }
+    .construction-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .local-seo-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    .intro, .expertise, .local-seo { padding-bottom: 7.5rem; }
+    .intro-visual figcaption { background: #0b141e; }
+    .local-seo-keywords { grid-template-columns: 3rem 1fr; }
+    .construction-header { padding: 1rem 1.35rem; }
+    .construction-brand img { width: 6.8rem; }
+    .construction-close { font-size: 0.53rem; }
+    .construction-hero > img { height: 18rem; }
+    .construction-hero > div, .construction-statement, .construction-flow, .construction-contact, .construction-service-area { padding-inline: 1.45rem; }
+    .construction-hero h2, .construction-statement h2, .construction-section-heading h2, .construction-contact h2 { font-size: clamp(2.75rem, 11vw, 4.5rem); }
+    .construction-flow-grid { grid-template-columns: 1fr; }
+    .construction-flow-grid span { margin-bottom: 2.8rem; }
+    .construction-footer { grid-template-columns: 1fr; padding-inline: 1.45rem; }
+}
+
+@media (max-width: 576px) {
+    .local-seo-intro > p:not(.eyebrow) { font-size: 0.86rem; line-height: 1.82; }
+    .local-seo-keywords { padding: 1.3rem; }
+    .local-seo-keywords > span { font-size: 2.2rem; }
+    .local-seo-keywords h3 { font-size: 1.22rem; }
+    .construction-service-grid { grid-template-columns: 1fr; }
+    .construction-service-grid article { min-height: auto; padding: 1.45rem; }
+    .construction-service-grid span { margin-bottom: 2.2rem; }
+    .construction-service-grid h3 { font-size: 1.55rem; }
+    .construction-footer nav > div { grid-template-columns: 1fr; gap: 0.42rem; }
+}
+
+@media (max-width: 430px) {
+    .construction-closed-view { padding-inline: 1rem; }
+    .construction-closed-title { font-size: 0.58rem; }
+    .construction-closed-action { font-size: 0.53rem; }
+    .construction-panel { height: 4.35rem; }
+    body.construction-active .construction-panel { height: 95dvh; }
+    .construction-header { gap: 0.8rem; padding-inline: 1rem; }
+    .construction-brand span { display: none; }
+    .construction-close { font-size: 0.48rem; letter-spacing: 0.08em; }
+    .construction-hero > img { height: 15rem; }
+    .construction-hero > div, .construction-statement, .construction-flow, .construction-contact, .construction-service-area { padding-inline: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .architecture-panel, .architecture-panel .site-header, .construction-panel, .construction-open-view, .construction-service-grid article { transition: none; }
+}

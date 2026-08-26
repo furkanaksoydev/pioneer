@@ -1,0 +1,7 @@
+@import url("./style-luxury-v19.css");
+
+/* Stronger contrast for the moving homepage testimonials, especially where a project image is present. */
+.community-reviews .review-card { border-color: rgba(224, 193, 122, 0.32); background: linear-gradient(145deg, rgba(29, 43, 56, 0.98), rgba(7, 13, 20, 0.96)); box-shadow: 0 1.4rem 3.1rem rgba(0, 0, 0, 0.32); }
+.community-reviews .review-card__text { color: rgba(239, 234, 222, 0.84); }.community-reviews .review-card__meta { color: var(--gold-bright); }
+.community-reviews .review-card__image-button { height: 10.5rem; border-color: rgba(238, 210, 147, 0.5); }.community-reviews .review-card__image { filter: saturate(0.78) brightness(0.84); }.community-reviews .review-card__image-button::after { background: linear-gradient(0deg, rgba(7, 13, 20, 0.68), transparent 60%); }
+@media (max-width: 576px) { .community-reviews .review-card__image-button { height: 9.8rem; } }

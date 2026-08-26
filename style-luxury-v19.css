@@ -1,0 +1,4 @@
+@import url("./style-luxury-v18.css");
+
+/* Keep the architecture rail pinned to the left viewport while the construction panel is open. */
+.architecture-rail { position: fixed; }

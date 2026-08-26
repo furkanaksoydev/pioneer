@@ -1,0 +1,7 @@
+@import url("./style-luxury-v16.css");
+
+/* A deliberate invitation between contact and footer: concise, premium, never loud. */
+.community-reviews__action { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 2.25rem; padding-top: 1.7rem; border-top: 1px solid rgba(224, 193, 122, 0.18); }
+.community-reviews__action > span { color: rgba(239, 234, 222, 0.6); font-family: "Montserrat", sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; }
+.community-reviews__action .button { min-width: 15.2rem; }
+@media (max-width: 576px) { .community-reviews__action { align-items: stretch; flex-direction: column; }.community-reviews__action .button { width: 100%; min-width: 0; } }

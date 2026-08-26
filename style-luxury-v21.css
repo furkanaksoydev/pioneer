@@ -1,0 +1,134 @@
+@import url("./style-luxury-v20.css");
+
+/* Mobile split-screen: the architectural site remains above while construction lives in a 15% lower rail. */
+@media (max-width: 992px) {
+    .architecture-panel { padding-bottom: 15dvh; }
+
+    .construction-panel {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15dvh;
+        min-height: 0;
+        border-top: 1px solid rgba(226, 195, 124, 0.48);
+        border-left: 0;
+    }
+
+    .construction-closed-view { padding: 0 clamp(1rem, 4vw, 1.5rem); }
+    .construction-closed-title { font-size: clamp(0.63rem, 2.3vw, 0.78rem); }
+
+    body.construction-active .architecture-panel {
+        position: fixed;
+        z-index: 1400;
+        inset: 0 0 auto;
+        width: 100%;
+        height: 15dvh;
+        padding: 0;
+        overflow: hidden;
+        background: #070d14;
+    }
+
+    body.construction-active .architecture-rail {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0 clamp(1rem, 4vw, 1.5rem);
+        flex-direction: row;
+        gap: clamp(0.75rem, 3vw, 1.25rem);
+        align-items: center;
+        justify-content: flex-start;
+        border-right: 0;
+        border-bottom: 1px solid rgba(226, 195, 124, 0.48);
+        box-shadow: 0 0.85rem 2.25rem rgba(0, 0, 0, 0.34);
+    }
+
+    body.construction-active .architecture-rail::before { opacity: 0.3; background-position: center 44%; }
+    body.construction-active .architecture-rail::after { top: -4.7rem; right: 13%; width: 8rem; }
+    body.construction-active .architecture-rail span { width: 2.65rem; font-size: 1.35rem; }
+    body.construction-active .architecture-rail small {
+        padding: 0;
+        border: 0;
+        font-size: clamp(0.58rem, 2vw, 0.72rem);
+        letter-spacing: 0.19em;
+        line-height: 1;
+        writing-mode: initial;
+        transform: none;
+    }
+    body.construction-active .architecture-rail b {
+        width: 2.45rem;
+        margin-left: auto;
+        transform: rotate(90deg);
+    }
+    body.construction-active .architecture-rail:hover b { transform: rotate(90deg) translateX(-0.18rem); }
+
+    body.construction-active .construction-panel {
+        top: auto;
+        width: 100%;
+        height: 85dvh;
+        border-top-width: 2px;
+        box-shadow: 0 -1.25rem 3.6rem rgba(0, 0, 0, 0.44);
+    }
+
+    /* In column layouts flex-basis becomes a height; reset it to remove the mobile title gap. */
+    .gallery-heading > div { flex: 0 0 auto; }
+}
+
+/* Make the feedback space comfortable, touch-first and easy to scan on narrow screens. */
+@media (max-width: 768px) {
+    .comments-layout { gap: clamp(2.3rem, 8vw, 3.5rem); padding-top: clamp(3.5rem, 10vw, 5rem); padding-bottom: clamp(3.8rem, 11vw, 5.5rem); }
+    .comments-layout h2, .comments-feed-heading h2 { font-size: clamp(2.35rem, 11vw, 3.7rem); line-height: 0.95; }
+    .comments-guidance > p:not(.eyebrow) { margin: 1.2rem 0 1.7rem; font-size: 0.92rem; line-height: 1.82; }
+    .comment-principles { gap: 0.25rem; }
+    .comment-principles li { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 0.65rem; padding: 0.95rem 0; font-size: 0.79rem; }
+    .comment-form { padding: clamp(1.25rem, 5vw, 1.8rem); }
+    .comment-form::before { top: 0.65rem; left: 0.65rem; width: 1.65rem; height: 1.65rem; }
+    .comment-form h3 { margin-bottom: 1.45rem; font-size: clamp(1.55rem, 7vw, 2rem); }
+    .comment-form-grid { gap: 1.2rem; }
+    .comment-field { gap: 0.55rem; }
+    .comment-field input, .comment-field select, .comment-field textarea { min-height: 2.9rem; padding: 0.78rem 0; font-size: 0.94rem; }
+    .comment-field textarea { min-height: 8.8rem; }
+    .comment-upload { padding: 0.85rem 0; }
+    .comment-consent { margin: 1.45rem 0; font-size: 0.6rem; line-height: 1.72; }
+    .comment-form .button { display: flex; width: 100%; min-height: 3.35rem; justify-content: center; }
+    .comments-feed { padding: clamp(3.6rem, 10vw, 5rem) 0; }
+    .comments-feed-heading { gap: 1.1rem; margin-bottom: 2rem; }
+    .comments-feed-heading p { max-width: 35rem; font-size: 0.87rem; line-height: 1.78; }
+    .comments-feed-grid { gap: 1rem; }
+    .comments-feed-grid .review-card { min-height: 0; padding: clamp(1.1rem, 4vw, 1.4rem); }
+    .comments-feed-grid .review-card__image-button { height: min(63vw, 19rem); margin-bottom: 1.15rem; }
+    .comments-feed-grid .review-card__text { margin-top: 0.85rem; font-size: 0.88rem; line-height: 1.76; }
+    .comments-hero { min-height: min(76dvh, 32rem); }
+    .comments-hero .site-shell { padding-top: 4rem; padding-bottom: 3.6rem; }
+    .comments-hero h1 { margin-bottom: 1.1rem; font-size: clamp(3rem, 15vw, 4.75rem); line-height: 0.9; }
+    .comments-hero p:not(.eyebrow) { font-size: 0.92rem; line-height: 1.75; }
+}
+
+@media (max-width: 576px) {
+    .gallery-heading { gap: 0.8rem; margin-bottom: 2.15rem; }
+    .gallery-heading > p { max-width: none; margin: 0; }
+    .comments-layout, .comments-feed .site-shell, .comments-hero .site-shell { width: calc(100% - 2rem); }
+    .comments-layout { padding-top: 3.25rem; padding-bottom: 3.8rem; }
+    .comments-feed-grid .review-card__image-button { height: min(67vw, 18rem); }
+    .review-card__identity { gap: 0.75rem; }
+    .review-card__initial { width: 2.25rem; height: 2.25rem; font-size: 0.9rem; }
+    .review-card__name { font-size: 0.88rem; }
+    .review-card__meta { font-size: 0.61rem; }
+}
+
+@media (max-width: 430px) {
+    .construction-closed-view { padding-inline: 0.9rem; }
+    .construction-closed-title { font-size: 0.6rem; letter-spacing: 0.13em; }
+    .construction-closed-action { font-size: 0.55rem; }
+    body.construction-active .architecture-rail { padding-inline: 0.9rem; }
+    body.construction-active .architecture-rail span { width: 2.35rem; font-size: 1.2rem; }
+    body.construction-active .architecture-rail b { width: 2.25rem; }
+    .gallery-heading { gap: 0.65rem; margin-bottom: 1.85rem; }
+    .gallery-heading > p { font-size: 0.82rem; line-height: 1.7; }
+    .comments-layout, .comments-feed .site-shell, .comments-hero .site-shell { width: calc(100% - 1.5rem); }
+    .comment-form { padding: 1.1rem; }
+    .comment-form h3 { font-size: 1.45rem; }
+    .comment-field input, .comment-field select, .comment-field textarea { font-size: 0.9rem; }
+    .comments-feed-grid .review-card__image-button { height: 14.25rem; }
+}

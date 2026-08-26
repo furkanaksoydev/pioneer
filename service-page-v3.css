@@ -1,0 +1,3 @@
+/* The service sheets live at the project root, so their shared theme must resolve from here. */
+@import url("./style-luxury-v17.css");
+@import url("./service-page-v2.css");

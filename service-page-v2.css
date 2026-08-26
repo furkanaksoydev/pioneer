@@ -1,0 +1,26 @@
+@import url("../style-luxury-v16.css");
+
+/* Rich editorial treatment for each service article. */
+body.service-page { background: #070d14; }
+.service-page-header { border-bottom-color: rgba(226, 196, 126, 0.24); background: rgba(7, 13, 20, 0.97); box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.15); }
+.service-page-hero { min-height: min(43rem, 82dvh); border-bottom: 1px solid rgba(226, 196, 126, 0.2); }
+.service-page-hero::before { position: absolute; z-index: 1; right: clamp(1.2rem, 5vw, 5rem); bottom: 2.2rem; width: min(30vw, 22rem); aspect-ratio: 1; content: ''; border: 1px solid rgba(232, 205, 142, 0.26); box-shadow: 0 0 0 1.1rem rgba(232, 205, 142, 0.025), 0 0 0 2.3rem rgba(232, 205, 142, 0.018); transform: rotate(45deg); pointer-events: none; }
+.service-page-hero__content { position: relative; z-index: 2; }
+.service-page-hero__content::after { display: block; width: min(19rem, 58vw); height: 1px; margin-top: 2rem; content: ''; background: linear-gradient(90deg, var(--gold), transparent); }
+.service-story { position: relative; gap: clamp(3rem, 8vw, 10rem); }
+.service-story > div:first-child { padding-left: clamp(1rem, 2vw, 2rem); border-left: 1px solid rgba(226, 196, 126, 0.48); }
+.service-story__copy { display: grid; gap: 1rem; }
+.service-story__copy p { margin: 0; padding: 1.35rem 1.4rem 1.4rem; border: 1px solid rgba(226, 196, 126, 0.18); background: linear-gradient(135deg, rgba(226, 196, 126, 0.065), rgba(16, 27, 39, 0.52)); box-shadow: 0 1rem 2.2rem rgba(0, 0, 0, 0.16); }
+.service-story__copy p:first-child { border-left-color: rgba(231, 199, 125, 0.65); }
+.service-steps { position: relative; overflow: hidden; background: radial-gradient(circle at 90% 14%, rgba(210, 177, 104, 0.1), transparent 26rem), #0a1119; }
+.service-steps::before { position: absolute; top: -7rem; left: -7rem; width: 19rem; aspect-ratio: 1; content: ''; background: repeating-linear-gradient(45deg, transparent 0 14px, rgba(226, 196, 126, 0.075) 15px 16px, transparent 17px 31px), repeating-linear-gradient(-45deg, transparent 0 14px, rgba(226, 196, 126, 0.075) 15px 16px, transparent 17px 31px); mask-image: radial-gradient(circle, #000, transparent 67%); }
+.service-steps .site-shell { position: relative; }
+.service-steps__grid { border: 0; gap: 1rem; background: transparent; }
+.service-step { position: relative; min-height: 17rem; overflow: hidden; border: 1px solid rgba(226, 196, 126, 0.22); background: linear-gradient(145deg, rgba(18, 31, 43, 0.94), rgba(7, 13, 20, 0.97)); box-shadow: 0 1.3rem 2.8rem rgba(0, 0, 0, 0.2); }
+.service-step::after { position: absolute; right: 1.1rem; bottom: 1.1rem; width: 1.7rem; height: 1.7rem; content: ''; border-right: 1px solid rgba(232, 205, 142, 0.4); border-bottom: 1px solid rgba(232, 205, 142, 0.4); }
+.service-step:hover { border-color: rgba(241, 217, 158, 0.62); background: linear-gradient(145deg, rgba(42, 55, 66, 0.95), rgba(10, 18, 27, 0.98)); }
+.service-closing { margin-top: 0; }
+.service-closing__content { padding: clamp(1.6rem, 3vw, 3rem); border: 1px solid rgba(226, 196, 126, 0.2); background: linear-gradient(125deg, rgba(226, 196, 126, 0.08), rgba(12, 22, 32, 0.12)); }
+.service-closing__content::before { display: block; width: 3.6rem; height: 1px; margin-bottom: 1.8rem; content: ''; background: var(--gold); }
+.service-page-footer { background: #070d14; }
+@media (max-width: 768px) { .service-page-hero::before { right: 1rem; width: 11rem; } .service-story__copy p { padding: 1.1rem; } .service-steps__grid { grid-template-columns: 1fr; } .service-step { min-height: auto; } }

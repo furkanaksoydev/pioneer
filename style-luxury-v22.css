@@ -1,0 +1,9 @@
+@import url("./style-luxury-v21.css");
+
+/* The compact architecture return rail is contained by its 15% mobile panel, not the full viewport. */
+@media (max-width: 992px) {
+    body.construction-active .architecture-rail {
+        position: absolute;
+        inset: 0;
+    }
+}

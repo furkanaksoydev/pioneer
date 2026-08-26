@@ -1,0 +1,10 @@
+@import url("./style-luxury-v23.css");
+
+/* The construction header owns a visible, interactive mobile navigation layer within its scroll panel. */
+@media (max-width: 992px) {
+    .construction-open-view { overflow-x: clip; }
+    .construction-open-view .site-header { z-index: 120; overflow: visible; isolation: isolate; }
+    .construction-open-view .header-inner { z-index: 1; }
+    .construction-open-view .primary-nav { z-index: 121; }
+    .construction-open-view .menu-toggle { z-index: 122; }
+}

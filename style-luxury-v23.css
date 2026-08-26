@@ -1,0 +1,6 @@
+@import url("./style-luxury-v22.css");
+
+/* The desktop architectural panel has a 100vh minimum; remove it only while it becomes the 15% mobile return rail. */
+@media (max-width: 992px) {
+    body.construction-active .architecture-panel { min-height: 0; }
+}
