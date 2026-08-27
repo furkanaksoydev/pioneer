@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Pioneer Yönetim Paneli | Önizleme</title>
+    <link rel="stylesheet" href="admin-preview-v1.css">
+</head>
+<body>
+    <div class="preview-note">Canlı arayüz önizlemesi · Veri kaydı yalnızca PHP/MySQL sunucusunda çalışır.</div>
+    <div class="admin-app">
+        <aside class="sidebar">
+            <a class="brand" href="index.html" aria-label="Pioneer ana sayfa"><img src="https://cdn.lavira360.com/pioneer/logo.png" alt="Pioneer"></a>
+            <nav aria-label="Yönetim menüsü">
+                <button class="nav-link is-active" type="button" data-tab="comments"><i>01</i> Yorumlar</button>
+                <button class="nav-link" type="button" data-tab="finance"><i>02</i> Finans</button>
+                <p class="nav-caption">Bekleyen ödemeler <b>3</b></p>
+                <button class="nav-link nav-link--sub" type="button" data-tab="payables">Ödeme yapılacaklar <b>2</b></button>
+                <button class="nav-link nav-link--sub" type="button" data-tab="receivables">Ödeme alınacaklar <b>1</b></button>
+            </nav>
+            <a class="site-link" href="index.html">← Web sitesine dön</a>
+        </aside>
+        <main class="main">
+            <header class="topbar"><div><p>Pioneer · işletme yönetimi</p><h1 data-title>Yorum <em>merkezi.</em></h1></div><span>Önizleme modu</span></header>
+            <section class="view is-active" data-view="comments">
+                <div class="intro"><p>Yeni yorumlar önce burada değerlendirilir. Yayındaki bir yoruma işletme yanıtı ekleyebilirsiniz.</p><b>1 yeni inceleme</b></div>
+                <article class="comment-card"><div class="card-head"><div><span class="status pending">İnceleme bekliyor</span><h2>Yeni yorum örneği</h2><p>Süleymanpaşa · 5/5 · Bugün</p></div><a href="#">E-posta ↗</a></div><p class="body-copy">Bu kart yalnızca yeni gelen yorumların onay veya ret adımını gösterir. İşletme yanıtı, yorum yayına alındıktan sonra açılır.</p><div class="actions"><button class="gold">Onayla ve yayınla</button><button>Reddet</button></div></article>
+                <article class="comment-card"><div class="card-head"><div><span class="status approved">Yayında</span><h2>Mert A.</h2><p>Süleymanpaşa · 5/5 · 25.08.2026</p></div><a href="#">E-posta ↗</a></div><p class="body-copy">Arsamız için yaptığımız ilk görüşmede fizibiliteyi ve olası proje senaryolarını çok net anlattılar.</p><label>İşletme yanıtı<textarea placeholder="Müşteriye herkese açık olarak yanıt verin.">Değerli geri bildiriminiz için teşekkür ederiz.</textarea></label><div class="actions"><button class="gold">Yanıtı yayınla</button><button class="danger">Yorumu sil</button></div></article>
+            </section>
+            <section class="view" data-view="finance">
+                <div class="cards"><article><small>Net kasa</small><strong>124.500,00 ₺</strong><span>Nakit net: 70.000,00 ₺ · Kart net: 54.500,00 ₺</span></article><article class="income"><small>Bu ay gelir</small><strong>180.000,00 ₺</strong><span>Nakit: 80.000,00 ₺ · Kart: 100.000,00 ₺</span></article><article class="expense"><small>Bu ay gider</small><strong>55.500,00 ₺</strong><span>Nakit: 18.000,00 ₺ · Kart: 37.500,00 ₺</span></article><article><small>Bekleyen net hareket</small><strong>42.000,00 ₺</strong><span>60.000,00 ₺ alınacak · 18.000,00 ₺ ödenecek</span></article></div>
+                <div class="finance-grid"><form class="panel" data-finance-form><p>Yeni kayıt</p><h2>Para hareketi ekle</h2><div class="choices"><label><input type="radio" name="type" checked> Anlık ödeme<small>Kasaya hemen girer/çıkar.</small></label><label><input type="radio" name="type"> Bekleyen ödeme<small>Parçalı işlem için.</small></label></div><div class="choices mini"><label><input type="radio" name="flow" checked> Gelir</label><label><input type="radio" name="flow"> Gider</label></div><label class="method">Ödeme yöntemi<select><option>Nakit</option><option>Kart</option></select></label><label>Miktar<input placeholder="Örn. 25.000,00"></label><label>Finans notu<textarea placeholder="İşlemin ne için olduğunu yazın."></textarea></label><label class="due" hidden>Beklenen tarih <small>Boşsa tarih belirtilmedi olarak kaydedilir.</small><input type="date"></label><button class="gold" type="button">Hareketi kaydet ↗</button></form><section class="panel ledger"><p>Hareket defteri</p><h2>Aylık kayıtlar</h2><details open><summary>Ağustos 2026 <b>3 işlem ＋</b></summary><div class="row head"><span>Tarih</span><span>İşlem / not</span><span>Tutar</span></div><div class="row"><span>27.08.2026</span><span><b>Proje danışmanlığı</b><small>Anlık finans hareketi · Kart</small></span><strong class="plus">+ 45.000,00 ₺</strong></div><div class="row"><span>26.08.2026</span><span><b>Şantiye malzemesi</b><small>Bekleyen ödeme · Nakit</small></span><strong class="minus">− 18.000,00 ₺</strong></div></details></section></div>
+            </section>
+            <section class="view pending-view" data-view="payables"><p>Bekleyen ödeme yönetimi</p><h2>Ödenecek <em>kayıtlar.</em></h2><article class="pending-card"><div><span class="status rejected">Yapılacak</span><h3>Şantiye malzemesi</h3><p>Toplam 18.000,00 ₺ · Kalan <b>12.000,00 ₺</b></p><div class="progress"><i></i></div><small>Vade: 30.08.2026 · Yaklaşan vade</small></div><div><button>Düzenle</button><button class="gold">Ödeme yap</button></div></article></section>
+            <section class="view pending-view" data-view="receivables"><p>Bekleyen ödeme yönetimi</p><h2>Tahsil edilecek <em>kayıtlar.</em></h2><article class="pending-card"><div><span class="status approved">Alınacak</span><h3>Proje danışmanlığı</h3><p>Toplam 60.000,00 ₺ · Kalan <b>60.000,00 ₺</b></p><div class="progress"><i class="empty"></i></div><small>Tarih belirtilmedi</small></div><div><button>Düzenle</button><button class="gold">Ödeme al</button></div></article></section>
+        </main>
+    </div>
+    <script src="admin-preview-v1.js"></script>
+</body>
+</html>
