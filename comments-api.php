@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'database-config.php';
+
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store, max-age=0');
@@ -15,36 +17,27 @@ function response(array $payload, int $status = 200): never {
 }
 
 function database(): PDO {
-    $dataPath = __DIR__ . DIRECTORY_SEPARATOR . 'data';
-    if (!is_dir($dataPath) && !mkdir($dataPath, 0750, true) && !is_dir($dataPath)) {
-        response(['ok' => false, 'message' => 'Yorum veritabanı dizini oluşturulamadı.'], 500);
-    }
-
-    $pdo = new PDO('sqlite:' . $dataPath . DIRECTORY_SEPARATOR . 'comments.sqlite');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $pdo->exec('PRAGMA foreign_keys = ON');
+    $pdo = pioneerMysql();
     $pdo->exec('CREATE TABLE IF NOT EXISTS comments (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        status TEXT NOT NULL DEFAULT "pending" CHECK(status IN ("pending", "approved", "rejected")),
-        full_name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        location TEXT,
-        rating INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        status ENUM("pending", "approved", "rejected") NOT NULL DEFAULT "pending",
+        full_name VARCHAR(70) NOT NULL,
+        email VARCHAR(190) NOT NULL,
+        location VARCHAR(70) NULL,
+        rating TINYINT UNSIGNED NOT NULL,
         body TEXT NOT NULL,
-        image_filename TEXT,
-        image_url TEXT,
-        image_status TEXT NOT NULL DEFAULT "none" CHECK(image_status IN ("none", "awaiting-r2", "ready", "rejected")),
-        consent_at TEXT NOT NULL,
-        ip_hash TEXT NOT NULL,
-        created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        reviewed_at TEXT,
-        reviewer_note TEXT
-    )');
-    $pdo->exec('CREATE INDEX IF NOT EXISTS idx_comments_public ON comments(status, created_at DESC)');
-    $columns = array_column($pdo->query('PRAGMA table_info(comments)')->fetchAll(), 'name');
-    if (!in_array('admin_reply', $columns, true)) $pdo->exec('ALTER TABLE comments ADD COLUMN admin_reply TEXT');
-    if (!in_array('replied_at', $columns, true)) $pdo->exec('ALTER TABLE comments ADD COLUMN replied_at TEXT');
+        image_filename VARCHAR(255) NULL,
+        image_url TEXT NULL,
+        image_status ENUM("none", "awaiting-r2", "ready", "rejected") NOT NULL DEFAULT "none",
+        consent_at DATETIME NOT NULL,
+        ip_hash CHAR(64) NOT NULL,
+        created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        reviewed_at DATETIME NULL,
+        reviewer_note TEXT NULL,
+        admin_reply TEXT NULL,
+        replied_at DATETIME NULL,
+        INDEX idx_comments_public (status, created_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
     seedExamples($pdo);
     return $pdo;
 }
@@ -83,7 +76,7 @@ function requestIpHash(): string {
 }
 
 function publicComments(PDO $pdo, int $limit): array {
-    $statement = $pdo->prepare('SELECT id, full_name, location, rating, body, image_url, admin_reply, replied_at, created_at FROM comments WHERE status = "approved" ORDER BY datetime(created_at) DESC LIMIT :limit');
+    $statement = $pdo->prepare('SELECT id, full_name, location, rating, body, image_url, admin_reply, replied_at, created_at FROM comments WHERE status = "approved" ORDER BY created_at DESC LIMIT :limit');
     $statement->bindValue(':limit', max(1, min($limit, 24)), PDO::PARAM_INT);
     $statement->execute();
     return $statement->fetchAll();
@@ -121,7 +114,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'submit') {
         $comment = validateComment(input());
         $ipHash = requestIpHash();
-        $recent = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE ip_hash = ? AND datetime(created_at) > datetime("now", "-1 hour")');
+        $recent = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE ip_hash = ? AND created_at > DATE_SUB(NOW(), INTERVAL 1 HOUR)');
         $recent->execute([$ipHash]);
         if ((int) $recent->fetchColumn() >= 3) response(['ok' => false, 'message' => 'Bir saat içinde en fazla üç yorum gönderebilirsiniz.'], 429);
 

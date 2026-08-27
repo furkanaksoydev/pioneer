@@ -1,0 +1,19 @@
+@import url("./admin-v2.css");
+
+.admin-mark { display: inline-flex; width: 8.5rem; align-items: center; }
+.admin-mark img { display: block; width: 100%; height: auto; filter: drop-shadow(0 .35rem .8rem rgba(0, 0, 0, .3)); transition: transform .32s ease, filter .32s ease; }
+.admin-mark:hover img { filter: drop-shadow(0 .55rem 1rem rgba(216, 181, 114, .2)); transform: translateY(-.2rem) scale(1.025); }
+.admin-topbar { min-height: 4.8rem; margin-bottom: 1.8rem; }
+.admin-topbar h1 { font-size: clamp(2rem, 3.4vw, 3.5rem); font-weight: 500; letter-spacing: -.055em; }
+.admin-sidebar nav>a, .nav-group>a, .finance-cards article, .comment-admin-card, .pending-card, .finance-form, .ledger, .admin-button, .plain-button, .ledger-month summary { transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease, color .28s ease; }
+.admin-sidebar nav>a:hover, .nav-group>a:hover { transform: translateX(.24rem); }
+.finance-cards article:hover { border-color: rgba(241, 215, 156, .5); box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2), inset 0 1px rgba(255, 243, 205, .08); transform: translateY(-.28rem); }
+.comment-admin-card:hover, .pending-card:hover { border-color: rgba(216, 181, 114, .42); box-shadow: 0 1.25rem 2.7rem rgba(0, 0, 0, .25); transform: translateY(-.18rem); }
+.finance-form:hover, .ledger:hover { border-color: rgba(216, 181, 114, .36); }
+.ledger-month summary:hover { color: var(--admin-gold-bright); padding-left: .3rem; }
+.payment-method-field[hidden], .due-date-field[hidden] { display: none; }
+.payment-method-field select, .inline-form select { width: 100%; padding: .78rem .85rem; border: 1px solid rgba(231, 201, 130, .24); border-radius: 0; outline: 0; color: var(--admin-paper); background: #0b1722; }
+.payment-method-field small, .due-date-field small, .inline-form label small { color: var(--admin-muted); font-size: .58rem; font-weight: 500; letter-spacing: normal; text-transform: none; }
+.finance-form .payment-method-field { display: grid; gap: .5rem; color: var(--admin-gold); font-size: .6rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.form-actions .admin-button:hover, .form-actions .plain-button:hover { transform: translateY(-.18rem); }
+@media (max-width: 768px) { .admin-topbar { margin-bottom: 1.35rem; } .admin-mark { width: 7rem; } }

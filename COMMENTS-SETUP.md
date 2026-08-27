@@ -2,22 +2,26 @@
 
 ## Mevcut çalışma biçimi
 
-- `comments-api.php`, ilk istekte `data/comments.sqlite` SQLite veritabanını hazırlar ve dört onaylı örnek yorum ekler.
+- `comments-api.php`, ilk istekte MySQL/phpMyAdmin üzerindeki `laviraco_pioneer` veritabanında yorum tablosunu hazırlar ve dört onaylı örnek yorum ekler.
 - Her yeni yorum `pending` statüsünde kaydedilir. Ana sayfa ve `yorumlar.html` yalnızca `approved` yorumları gösterir.
 - `admin.php`, oturum korumalı yorum ve finans yönetim ekranıdır. Yorumlar burada yanıtlanır, onaylanır, reddedilir veya silinir. Yorum yanıtı, yorum onaylandığında herkese açık akışta görünür.
-- Aynı SQLite veritabanı; gelir/gider kayıtlarını, parça parça tahsilat ve ödemeleri ve denetim kaydını da saklar. Para tutarları yuvarlama hatası oluşturmaması için kuruş cinsinden tutulur.
+- Aynı MySQL veritabanı; gelir/gider kayıtlarını, parça parça tahsilat ve ödemeleri ve denetim kaydını da saklar. Para tutarları yuvarlama hatası oluşturmaması için kuruş cinsinden tutulur.
 - E-posta adresi yalnızca yönetici ekranında görünür; herkese açık API yanıtına hiç dahil edilmez.
-- `data/.htaccess`, Apache üzerinde veritabanı dosyalarının doğrudan istenmesini engeller. `data/*.sqlite*` Git tarafından izlenmez.
+- Veritabanı giriş bilgileri yalnızca Git tarafından izlenmeyen `config.local.php` dosyasında tutulur. Paylaşılan `database-config.php` dosyası, canlı sunucuda aynı bilgileri ortam değişkenlerinden de okuyabilir.
 
 ## Yayına almadan önce zorunlu ayarlar
 
-Sunucu ortamında aşağıdaki IP salt değerini güçlü, rastgele bir değerle tanımlayın ve Apache/PHP-FPM sürecini yeniden başlatın:
+Sunucu ortamında aşağıdaki ayarları tanımlayın ve Apache/PHP-FPM sürecini yeniden başlatın:
 
 ```text
 PIONEER_COMMENT_IP_SALT=uzun-ve-rastgele-bir-sunucu-sirri
+PIONEER_DB_HOST=localhost
+PIONEER_DB_NAME=laviraco_pioneer
+PIONEER_DB_USER=laviraco_pioneer
+PIONEER_DB_PASSWORD=guclu-ve-gizli-parola
 ```
 
-Bu değer, ham IP tutmadan saatlik gönderim sınırı için kullanılan tek yönlü HMAC özetini üretir. Yönetici parolası yalnızca `admin.php` içinde bcrypt özeti olarak tutulur; düz metin parola hiçbir dosyaya yazılmaz.
+IP salt değeri, ham IP tutmadan saatlik gönderim sınırı için kullanılan tek yönlü HMAC özetini üretir. Veritabanı parolası Git’e ya da istemci tarafına yazılmaz; yerelde `config.local.php`, canlıda ise ortam değişkenleri kullanılmalıdır. Yönetici parolası yalnızca `admin.php` içinde bcrypt özeti olarak tutulur.
 
 ## Moderasyon kararı
 
