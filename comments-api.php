@@ -42,6 +42,9 @@ function database(): PDO {
         reviewer_note TEXT
     )');
     $pdo->exec('CREATE INDEX IF NOT EXISTS idx_comments_public ON comments(status, created_at DESC)');
+    $columns = array_column($pdo->query('PRAGMA table_info(comments)')->fetchAll(), 'name');
+    if (!in_array('admin_reply', $columns, true)) $pdo->exec('ALTER TABLE comments ADD COLUMN admin_reply TEXT');
+    if (!in_array('replied_at', $columns, true)) $pdo->exec('ALTER TABLE comments ADD COLUMN replied_at TEXT');
     seedExamples($pdo);
     return $pdo;
 }
@@ -80,7 +83,7 @@ function requestIpHash(): string {
 }
 
 function publicComments(PDO $pdo, int $limit): array {
-    $statement = $pdo->prepare('SELECT id, full_name, location, rating, body, image_url, created_at FROM comments WHERE status = "approved" ORDER BY datetime(created_at) DESC LIMIT :limit');
+    $statement = $pdo->prepare('SELECT id, full_name, location, rating, body, image_url, admin_reply, replied_at, created_at FROM comments WHERE status = "approved" ORDER BY datetime(created_at) DESC LIMIT :limit');
     $statement->bindValue(':limit', max(1, min($limit, 24)), PDO::PARAM_INT);
     $statement->execute();
     return $statement->fetchAll();

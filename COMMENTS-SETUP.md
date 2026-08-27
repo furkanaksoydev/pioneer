@@ -4,20 +4,20 @@
 
 - `comments-api.php`, ilk istekte `data/comments.sqlite` SQLite veritabanını hazırlar ve dört onaylı örnek yorum ekler.
 - Her yeni yorum `pending` statüsünde kaydedilir. Ana sayfa ve `yorumlar.html` yalnızca `approved` yorumları gösterir.
-- `comments-admin.php`, parola korumalı manuel inceleme ekranıdır. Onay veya ret işlemi; inceleme notu ve zaman bilgisiyle veritabanına yazılır.
+- `admin.php`, oturum korumalı yorum ve finans yönetim ekranıdır. Yorumlar burada yanıtlanır, onaylanır, reddedilir veya silinir. Yorum yanıtı, yorum onaylandığında herkese açık akışta görünür.
+- Aynı SQLite veritabanı; gelir/gider kayıtlarını, parça parça tahsilat ve ödemeleri ve denetim kaydını da saklar. Para tutarları yuvarlama hatası oluşturmaması için kuruş cinsinden tutulur.
 - E-posta adresi yalnızca yönetici ekranında görünür; herkese açık API yanıtına hiç dahil edilmez.
 - `data/.htaccess`, Apache üzerinde veritabanı dosyalarının doğrudan istenmesini engeller. `data/*.sqlite*` Git tarafından izlenmez.
 
 ## Yayına almadan önce zorunlu ayarlar
 
-Sunucu ortamında aşağıdaki iki değişkeni güçlü, rastgele değerlerle tanımlayın ve Apache/PHP-FPM sürecini yeniden başlatın:
+Sunucu ortamında aşağıdaki IP salt değerini güçlü, rastgele bir değerle tanımlayın ve Apache/PHP-FPM sürecini yeniden başlatın:
 
 ```text
-PIONEER_COMMENTS_ADMIN_PASSWORD=uzun-ve-tekil-bir-yonetici-parolasi
 PIONEER_COMMENT_IP_SALT=uzun-ve-rastgele-bir-sunucu-sirri
 ```
 
-İlk değişken olmadan yönetici ekranı kapalı kalır. İkinci değişken, ham IP tutmadan saatlik gönderim sınırı için kullanılan tek yönlü HMAC özetini üretir. Bu değerleri kaynak koduna, Git deposuna veya istemci tarafına yazmayın.
+Bu değer, ham IP tutmadan saatlik gönderim sınırı için kullanılan tek yönlü HMAC özetini üretir. Yönetici parolası yalnızca `admin.php` içinde bcrypt özeti olarak tutulur; düz metin parola hiçbir dosyaya yazılmaz.
 
 ## Moderasyon kararı
 

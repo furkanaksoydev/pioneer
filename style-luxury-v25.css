@@ -1,0 +1,14 @@
+@import url("./style-luxury-v24.css");
+
+.review-card__reply {
+    position: relative;
+    margin-top: 1.25rem;
+    padding: 1rem 1.1rem 1rem 1.25rem;
+    border: 1px solid rgba(212, 174, 96, .27);
+    border-radius: 2px;
+    background: linear-gradient(135deg, rgba(212, 174, 96, .12), rgba(255, 255, 255, .025));
+}
+.review-card__reply::before { position: absolute; top: .9rem; bottom: .9rem; left: 0; width: 2px; content: ""; background: linear-gradient(#f0d488, #9a6d2e); }
+.review-card__reply span { display: block; margin-bottom: .45rem; color: #efd18a; font-family: Montserrat, sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.review-card__reply p { margin: 0; color: rgba(247, 241, 225, .82); font-size: .94rem; line-height: 1.7; }
+@media (max-width: 576px) { .review-card__reply { margin-top: 1rem; padding: .9rem 1rem .9rem 1.15rem; } .review-card__reply p { font-size: .88rem; } }

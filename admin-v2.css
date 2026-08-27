@@ -1,0 +1,4 @@
+@import url("./admin-v1.css");
+
+/* Sistem yazıları için yedek aile Arial yerine daha nötr ve tutarlı sans-serif'tir. */
+body.admin-body { font-family: Montserrat, "Segoe UI", sans-serif; }
